@@ -12,14 +12,7 @@ const Loading = lazy(() => import('@/pages/Loading/page'))
 const LoadingRoute: React.FC = () => {
   const navigate = useNavigate()
 
-  React.useEffect(() => {
-    if (sessionStorage.getItem('hasLoaded')) {
-      navigate('/home', { replace: true })
-    }
-  }, [navigate])
-
   const handleSkip = () => {
-    sessionStorage.setItem('hasLoaded', 'true')
     navigate('/home')
   }
 
