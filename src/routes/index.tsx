@@ -13,7 +13,13 @@ const LoadingRoute: React.FC = () => {
   const navigate = useNavigate()
 
   const handleSkip = () => {
-    navigate('/home')
+    const redirectPath = sessionStorage.getItem('redirectPath')
+    if (redirectPath) {
+      sessionStorage.removeItem('redirectPath')
+      navigate(redirectPath)
+    } else {
+      navigate('/home')
+    }
   }
 
   return <Loading onSkip={handleSkip} />

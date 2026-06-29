@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter, useLocation } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { BrowserRouter, useLocation, useNavigate } from 'react-router-dom'
 import { LenisProvider } from '@/context/LenisContext'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import { Navbar } from '@/components/layout/Navbar'
@@ -8,8 +8,17 @@ import { AppRouter } from '@/routes'
 
 const AppContent: React.FC = () => {
   const location = useLocation()
+  const navigate = useNavigate()
   const isHomePage = location.pathname === '/home'
   const isLoadingPage = location.pathname === '/loading' || location.pathname === '/'
+
+  useEffect(() => {
+    const currentPath = window.location.pathname
+    if (currentPath !== '/loading' && currentPath !== '/') {
+      sessionStorage.setItem('redirectPath', currentPath)
+      navigate('/loading', { replace: true })
+    }
+  }, [])
 
   if (isLoadingPage) {
     return <AppRouter />
