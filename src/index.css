@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --surface: #ffffff;
+  --card: #fbfde8;
+  --text-primary: #1f1f1f;
+  --text-secondary: #6b6b6b;
+  --border: #f0dada;
+  --tag-bg: #f3f3f3;
+  --tag-text: #1f1f1f;
+  --red: #f33266;
+
+  /* Input fields (Future scalability) */
+  --input-bg: #ffffff;
+  --input-border: #f0dada;
+  --input-placeholder: #888888;
+  --input-focus-border: #f33266;
+}
+
+.dark {
+  --background: #0b0b0b;
+  --surface: #111111;
+  --card: #181818;
+  --text-primary: #ffffff;
+  --text-secondary: #bdbdbd;
+  --border: #2a2a2a;
+  --tag-bg: #222222;
+  --tag-text: #ffffff;
+  --red: #f33266;
+
+  /* Input fields (Future scalability) */
+  --input-bg: #111111;
+  --input-border: #2a2a2a;
+  --input-placeholder: #555555;
+  --input-focus-border: #f33266;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border-custom: var(--border);
+  --color-tag-bg: var(--tag-bg);
+  --color-tag-text: var(--tag-text);
+  --color-red: var(--red);
+
+  --color-primary: var(--red);
+  --color-primary-hover: #e04444;
+  --color-primary-light: #ff6e6e;
+
+  --color-accent: var(--red);
+  --color-accent-hover: #e04444;
+  --color-accent-light: #ff6e6e;
+  --color-accent-cyan: var(--red);
+
+  --color-neutral-darkest: var(--background);
+  --color-neutral-dark: var(--card);
+  --color-neutral-medium: var(--tag-bg);
+  --color-neutral-light: var(--text-secondary);
+  --color-neutral-bright: var(--text-primary);
+
+  --font-sans: "Space Mono", monospace;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "Space Mono", monospace;
+  --font-ibm-plex-mono: "IBM Plex Mono", monospace;
+  --font-display: "Cormorant Garamond", serif;
+  --font-fell: "IM Fell Great Primer", serif;
+}
+
+/* Global premium transitions for theme color variables */
+body,
+header,
+nav,
+aside,
+section,
+footer,
+article,
+button,
+input,
+textarea,
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+  transition-property: color, background-color, border-color, text-decoration-color;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+body,
+header,
+nav,
+aside,
+section,
+footer,
+article,
+.project-card,
+.project-card>div {
+  transition-duration: 300ms;
+}
+
+@utility text-reveal-char {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+html {
+  scroll-behavior: auto;
+  /* Required for Lenis smooth scroll */
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Space Mono", monospace;
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--red);
+}
+
+/* Lenis Smooth Scrolling support */
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
