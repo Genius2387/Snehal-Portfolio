@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
+const environment = 'development'; // 'development' or 'production'
+
 const SnehalIntro = ({ onSkip }: { onSkip?: () => void }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cupRef = useRef<HTMLDivElement>(null);
@@ -132,7 +134,7 @@ const SnehalIntro = ({ onSkip }: { onSkip?: () => void }) => {
         },
         onComplete: () => {
           // Auto transition when complete
-          if (onSkip) onSkip();
+          if (environment !== 'development' && onSkip) onSkip();
         }
       });
 
@@ -376,7 +378,7 @@ const SnehalIntro = ({ onSkip }: { onSkip?: () => void }) => {
           }}
         >
           {/* Curved Arrow pointing down-left */}
-          <svg width="60" height="70" viewBox="0 0 60 70" style={{ opacity: 0.6 }}>
+          <svg width="60" height="70" viewBox="0 0 60 70" style={{ opacity: 0.6 }} className='mt-12'>
             <path d="M 40,2 Q 10,5 22,55" fill="none" stroke="#666" strokeWidth="1.8" strokeLinecap="round" />
             <path d="M 16,47 L 22,55 L 26,47" fill="none" stroke="#666" strokeWidth="1.8" strokeLinecap="round" />
           </svg>

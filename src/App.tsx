@@ -6,6 +6,8 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { AppRouter } from '@/routes'
 
+const environment = 'development'; // 'development' or 'production'
+
 const AppContent: React.FC = () => {
   const location = useLocation()
   const navigate = useNavigate()
@@ -13,6 +15,7 @@ const AppContent: React.FC = () => {
   const isLoadingPage = location.pathname === '/loading' || location.pathname === '/'
 
   useEffect(() => {
+    if (environment === 'development') return
     const currentPath = window.location.pathname
     if (currentPath !== '/loading' && currentPath !== '/') {
       sessionStorage.setItem('redirectPath', currentPath)
