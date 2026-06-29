@@ -1,14 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
-const SnehalIntro = ({ onSkip }) => {
-  const containerRef = useRef(null);
-  const cupRef = useRef(null);
-  const earphonesRef = useRef(null);
-  const wireRef = useRef(null);
-  const labelRefs = useRef([]);
-  const progressRef = useRef(null);
-  const progressTextRef = useRef(null);
+const SnehalIntro = ({ onSkip }: { onSkip?: () => void }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cupRef = useRef<HTMLDivElement>(null);
+  const earphonesRef = useRef<HTMLDivElement>(null);
+  const wireRef = useRef<SVGPathElement>(null);
+  const labelRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const progressTextRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Prevent body scroll during loading intro
