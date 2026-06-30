@@ -264,13 +264,20 @@ const SnehalIntro = ({ onSkip }: { onSkip?: () => void }) => {
         </p>
       </div>
 
-      {/* ─── SCENE CONTAINER ─── */}
+      {/* ─── SCENE CONTAINER WRAPPER ─── */}
       <div style={{
-        position: 'relative',
-        width: 'min(1000px, 95vw)',
-        height: '480px',
-        marginBottom: '40px',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        transform: 'translateX(60px)',
       }}>
+        {/* ─── SCENE CONTAINER ─── */}
+        <div style={{
+          position: 'relative',
+          width: 'min(1000px, 95vw)',
+          height: '480px',
+          marginBottom: '40px',
+        }}>
 
         {/* Label: before knowing me */}
         <div
@@ -528,6 +535,7 @@ const SnehalIntro = ({ onSkip }: { onSkip?: () => void }) => {
             }} 
           />
         </div> */}
+        </div>
       </div>
 
       {/* ─── BOTTOM PROGRESS ─── */}

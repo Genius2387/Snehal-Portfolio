@@ -8,12 +8,27 @@ import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { Card } from '@/components/ui/Card'
 import ScrollStack, { ScrollStackItem } from './ScrollStack'
+import { gsap } from '@/utils/animations'
 
 const ImpactoCaseStudy: React.FC = () => {
   const [activePersona, setActivePersona] = React.useState<1 | 2>(1)
   const [activeSection, setActiveSection] = React.useState<string>('overview')
 
   React.useEffect(() => {
+    // Entrance animations for case study sections
+    gsap.fromTo(
+      '.reveal-cs',
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power3.out',
+        clearProps: 'all',
+      }
+    )
+
     const sections = [
       'overview',
       'problem-space',
@@ -53,7 +68,7 @@ const ImpactoCaseStudy: React.FC = () => {
         style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
       >
         {/* Hero Image */}
-        <div className="w-full mb-16 overflow-hidden">
+        <div className="w-full mb-16 overflow-hidden reveal-cs">
           <img
             src="/projects/projectno-2.png"
             alt="Impacto Case Study Hero"
@@ -64,7 +79,7 @@ const ImpactoCaseStudy: React.FC = () => {
         <Container>
 
           {/* Grid Layout: Columns */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start border-t border-border-custom dark:border-white/10 pt-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start border-t border-border-custom dark:border-white/10 pt-12 reveal-cs">
             {/* Left Column: holds everything except the Table of Contents */}
             <div className="lg:col-span-10 space-y-24">
 
@@ -126,7 +141,7 @@ const ImpactoCaseStudy: React.FC = () => {
               </div>
 
               {/* Problem Space Section */}
-              <section id="problem-space" className="mt-24 pt-16 border-t border-border-custom dark:border-white/10 space-y-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <section id="problem-space" className="border-t border-border-custom dark:border-white/10 space-y-6" style={{ fontFamily: 'Inter, sans-serif' }}>
                 <span className="text-[20px] font-bold text-[#f33266]">
                   Problem Space
                 </span>
@@ -157,7 +172,7 @@ const ImpactoCaseStudy: React.FC = () => {
               </section>
 
               {/* Core Question & Research Section */}
-              <section id="research" className="mt-24 pt-16 border-t border-border-custom dark:border-white/10 space-y-8 max-w-[1050px]" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <section id="research" className="mt-24 pt-2 border-t border-border-custom dark:border-white/10 space-y-8 max-w-[1050px]" style={{ fontFamily: 'Inter, sans-serif' }}>
                 <div className="space-y-4">
                   <p className="text-[18px] text-neutral-light leading-normal">
                     This brought me to the core question...
@@ -180,7 +195,7 @@ const ImpactoCaseStudy: React.FC = () => {
                   {/* Research Images Grid */}
                   <div className="flex flex-col md:flex-row gap-6">
                     {/* Survey Card */}
-                    <div className="bg-white/5 border border-border-custom dark:border-white/10 rounded-2xl p-4 flex items-center justify-center overflow-hidden w-full md:w-[500px] h-[380px] shrink-0">
+                    <div className="bg-white/5 border border-border-custom dark:border-white/10 rounded-2xl flex items-center justify-center overflow-hidden w-full md:w-[500px] h-[380px] shrink-0">
                       <img
                         src="/projects/research-survey.jpg"
                         alt="Survey using Google Forms"
@@ -189,7 +204,7 @@ const ImpactoCaseStudy: React.FC = () => {
                     </div>
 
                     {/* Demographics Card */}
-                    <div className="bg-white/5 border border-border-custom dark:border-white/10 rounded-2xl p-4 flex items-center justify-center overflow-hidden w-full md:w-[500px] h-[380px] shrink-0">
+                    <div className="bg-white/5 border border-border-custom dark:border-white/10 rounded-2xl flex items-center justify-center overflow-hidden w-full md:w-[500px] h-[380px] shrink-0">
                       <img
                         src="/projects/research-demographics.jpg"
                         alt="User Demographics"
@@ -200,17 +215,17 @@ const ImpactoCaseStudy: React.FC = () => {
                 </div>
 
                 {/* Key Insights Header */}
-                <div className="space-y-4 pt-12">
+                <div className="space-y-4 pt-2">
                   <h3 className="text-xl sm:text-2xl md:text-[28px] font-extrabold text-neutral-bright tracking-tight">
                     Key Insights from Users
                   </h3>
-                  <p className="text-[18px] leading-relaxed text-neutral-light">
+                  <p className="text-[18px] leading-relaxed text-neutral-light -mt-4">
                     The research revealed five strong patterns that consistently appeared across both interviews and surveys.
                   </p>
                 </div>
 
                 {/* Key Insights 4 Columns */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-8 max-w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2 max-w-full">
                   <div className="space-y-2 border-l-[3px] border-[#f33266] pl-3">
                     <h4 className="font-bold text-neutral-bright text-[15px] xl:text-[16px] tracking-tight whitespace-nowrap">
                       Information is scattered
@@ -249,15 +264,15 @@ const ImpactoCaseStudy: React.FC = () => {
                 </div>
 
                 {/* Understanding the Core Problem */}
-                <div className="pt-16 space-y-6">
+                <div className="pt-4 space-y-6">
                   <h3 className="text-xl sm:text-2xl md:text-[28px] font-extrabold text-neutral-bright tracking-tight">
                     Understanding the Core Problem
                   </h3>
-                  <p className="text-[18px] leading-relaxed text-neutral-light">
+                  <p className="text-[18px] leading-relaxed text-neutral-light max-w-4xl -mt-4">
                     After analysing survey responses and user interviews, it became clear that the challenge isn't a lack of interest in volunteering people genuinely want to help.
                   </p>
 
-                  <div className="pt-4 space-y-2">
+                  <div className="pt-1 space-y-2 -mt-4">
                     <p className="text-[16px] text-neutral-light/60">
                       This led me to identify the core problem
                     </p>
@@ -271,35 +286,35 @@ const ImpactoCaseStudy: React.FC = () => {
               {/* Personas & Insights Section */}
               <section
                 id="personas-&-insights"
-                className="mt-24 pt-16 border-t border-border-custom dark:border-white/10 space-y-6 max-w-[850px]"
+                className="-mt-14 border-t border-border-custom dark:border-white/10 space-y-6 max-w-[850px]"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 <div className="space-y-6">
                   <p className="text-[16px] italic text-neutral-light/70">
                     The insights revealed not just what users struggle with, but who these users really are.
                   </p>
-                  <h3 className="text-xl sm:text-2xl md:text-[28px] font-extrabold text-neutral-bright tracking-tight leading-snug max-w-4xl">
+                  <h3 className="text-xl sm:text-2xl md:text-[28px] font-extrabold text-neutral-bright tracking-tight leading-snug max-w-4xl -mt-4">
                     The insights revealed not just what users struggle with, but who these users really are
                   </h3>
 
-                  <div className="pt-8 space-y-2">
+                  <div className="pt-1 space-y-2">
                     <span className="text-[20px] font-bold text-[#f33266] block">
                       Personas & Insights
                     </span>
-                    <p className="text-[18px] text-neutral-light leading-relaxed">
+                    <p className="text-[18px] text-neutral-light leading-relaxed -mt-2">
                       This led me to create <span className="text-[#f33266] font-semibold">2 primary personas</span> that represent the core user groups for Impacto
                     </p>
                   </div>
                 </div>
 
                 {/* Persona Toggle & Display Section */}
-                <div className="pt-12 space-y-4 max-w-[850px]">
+                <div className="space-y-4 max-w-[850px]">
                   <div className="flex justify-end gap-2">
                     <button
                       onClick={() => setActivePersona(1)}
                       className={`px-4 py-1 rounded-full font-medium transition-all duration-300 text-[13px] ${activePersona === 1
                         ? 'bg-[#f33266] text-white border border-[#f33266]'
-                        : 'bg-transparent text-neutral-light border border-neutral-light/30 hover:border-neutral-light'
+                        : 'bg-transparent text-neutral-light border border-neutral-light/30 hover:border-[#f33266]'
                         }`}
                     >
                       Persona 1
@@ -308,7 +323,7 @@ const ImpactoCaseStudy: React.FC = () => {
                       onClick={() => setActivePersona(2)}
                       className={`px-4 py-1 rounded-full font-medium transition-all duration-300 text-[13px] ${activePersona === 2
                         ? 'bg-[#f33266] text-white border border-[#f33266]'
-                        : 'bg-transparent text-neutral-light border border-neutral-light/30 hover:border-neutral-light'
+                        : 'bg-transparent text-neutral-light border border-neutral-light/30 hover:border-[#f33266]'
                         }`}
                     >
                       Persona 2
@@ -329,7 +344,7 @@ const ImpactoCaseStudy: React.FC = () => {
               {/* User Journey Section */}
               <section
                 id="user-journey"
-                className="mt-24 pt-16 border-t border-border-custom dark:border-white/10 space-y-8 max-w-[1050px]"
+                className="-mt-10 border-t border-border-custom dark:border-white/10 space-y-8 max-w-[1050px]"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 <div className="space-y-4">
@@ -449,20 +464,20 @@ const ImpactoCaseStudy: React.FC = () => {
               {/* Where the Experience Breaks Section */}
               <section
                 id="experience-breaks"
-                className="mt-24 pt-16 border-t border-border-custom dark:border-white/10 space-y-12 max-w-[850px]"
+                className="-mt-6 border-t border-border-custom dark:border-white/10 space-y-12 max-w-[850px]"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 <div className="space-y-4">
                   <h3 className="text-xl sm:text-2xl md:text-[28px] font-extrabold text-neutral-bright tracking-tight leading-snug">
                     Where the experience breaks
                   </h3>
-                  <p className="text-[16px] text-neutral-light leading-relaxed max-w-3xl italic">
+                  <p className="text-[16px] text-neutral-light leading-relaxed max-w-3xl italic -mt-3">
                     Key moments where users hesitate, drop off, or lose motivation.
                   </p>
                 </div>
 
                 {/* Grid of 4 columns */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                   {/* Column 1 */}
                   <div className="flex flex-col items-center">
                     <div className="w-12 border-t-2 border-dotted border-[#f33266]/40 mb-6 mx-auto"></div>
@@ -560,7 +575,7 @@ const ImpactoCaseStudy: React.FC = () => {
               {/* Information Architecture Section */}
               <section
                 id="information-architecture"
-                className="mt-24 pt-16 border-t border-border-custom dark:border-white/10 space-y-12 max-w-[850px]"
+                className="-mt-6 border-t border-border-custom dark:border-white/10 space-y-12 max-w-[850px]"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 {/* Top row transition callout */}
@@ -849,7 +864,7 @@ const ImpactoCaseStudy: React.FC = () => {
               {/* Design Decisions Section */}
               <section
                 id="design-decisions"
-                className="mt-24 pt-16 border-t border-border-custom dark:border-white/10 space-y-12 max-w-[850px]"
+                className="-mt-6 border-t border-border-custom dark:border-white/10 space-y-12 max-w-[850px]"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 {/* Title & Introduction */}
@@ -857,10 +872,10 @@ const ImpactoCaseStudy: React.FC = () => {
                   <h3 className="text-xl sm:text-2xl md:text-[28px] font-extrabold text-neutral-bright tracking-tight leading-snug">
                     Design Decisions
                   </h3>
-                  <p className="text-[16px] text-neutral-light leading-relaxed max-w-3xl italic" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  <p className="-mt-4 text-[16px] text-neutral-light leading-relaxed max-w-3xl italic" style={{ fontFamily: 'Inter, sans-serif' }}>
                     Turning research insights into interface decisions.
                   </p>
-                  <p className="text-[16px] text-neutral-bright leading-relaxed max-w-3xl font-medium mt-4">
+                  <p className="-mt-2 text-[16px] text-neutral-bright leading-relaxed max-w-3xl font-medium">
                     Every <span className="text-[#f33266] font-semibold">interaction</span> in Impacto was designed to <span className="text-[#f33266] font-semibold">reduce friction</span>, <span className="text-[#f33266] font-semibold">increase trust</span>, and help users <span className="text-[#f33266] font-semibold">volunteer faster</span>.
                   </p>
                 </div>
@@ -1034,7 +1049,7 @@ const ImpactoCaseStudy: React.FC = () => {
               {/* Wireframe Exploration Section */}
               <section
                 id="wireframes"
-                className="mt-24 pt-16 border-t border-border-custom dark:border-white/10 space-y-8 max-w-[850px]"
+                className="border-t border-border-custom dark:border-white/10 space-y-8 max-w-[850px]"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 {/* NEXT STEP Badge */}
@@ -1046,7 +1061,7 @@ const ImpactoCaseStudy: React.FC = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <span className="text-[20px] font-bold text-[#f33266] block">
+                  <span className="text-[20px] font-bold text-[#f33266] block -mt-4">
                     Wireframe Exploration
                   </span>
                   <h3 className="text-[28px] font-black text-neutral-bright tracking-tight leading-tight uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -1070,14 +1085,14 @@ const ImpactoCaseStudy: React.FC = () => {
                       <img
                         src="/projects/wireframe-2.png"
                         alt="Wireframe 2 - Layout Variations"
-                        className="w-full h-full object-cover rounded-[40px]"
+                        className="w-full h-full rounded-[40px]"
                       />
                     </ScrollStackItem>
                     <ScrollStackItem itemClassName="flex items-center justify-center">
                       <img
                         src="/projects/wireframe-3.png"
                         alt="Wireframe 3 - Navigation Design"
-                        className="w-full h-full object-cover rounded-[40px]"
+                        className="w-full h-full rounded-[40px]"
                       />
                     </ScrollStackItem>
                     <ScrollStackItem itemClassName="flex items-center justify-center">
@@ -1143,6 +1158,24 @@ export const ProjectDetails: React.FC = () => {
     return PROJECTS.find((p) => p.slug === slug)
   }, [slug])
 
+  // Entrance animations for standard project page when mounted
+  React.useEffect(() => {
+    if (slug !== 'project-2') {
+      gsap.fromTo(
+        '.reveal-cs',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out',
+          clearProps: 'all',
+        }
+      )
+    }
+  }, [slug])
+
   if (slug === 'project-2') {
     return <ImpactoCaseStudy />
   }
@@ -1174,7 +1207,7 @@ export const ProjectDetails: React.FC = () => {
             <ArrowLeft size={16} /> Back to Home
           </Link>
 
-          <div className="space-y-6 max-w-4xl">
+          <div className="space-y-6 max-w-4xl reveal-cs">
             <Badge variant="primary">{project.category}</Badge>
             <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl leading-tight">
               {project.title}
@@ -1185,7 +1218,7 @@ export const ProjectDetails: React.FC = () => {
           </div>
 
           {/* Project Metadata Grid */}
-          <div className="grid grid-cols-2 gap-6 border-y border-white/5 py-8 mt-12 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-6 border-y border-white/5 py-8 mt-12 md:grid-cols-4 reveal-cs">
             <div className="space-y-1">
               <span className="text-xxs font-bold uppercase tracking-widest text-neutral-light/50 flex items-center gap-1.5">
                 <User size={12} /> Client

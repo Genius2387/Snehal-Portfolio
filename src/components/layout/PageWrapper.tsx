@@ -14,27 +14,37 @@ export const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => {
   useEffect(() => {
     // Scroll to top immediately when this page component mounts (after lazy load resolves)
     const resetScroll = () => {
-      window.scrollTo(0, 0)
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
       if (lenis) {
         lenis.scrollTo(0, { immediate: true })
       }
     }
 
     resetScroll()
-    const timer = setTimeout(resetScroll, 50)
+    const t1 = setTimeout(resetScroll, 50)
+    const t2 = setTimeout(resetScroll, 150)
+    const t3 = setTimeout(resetScroll, 300)
 
     const container = containerRef.current
     if (!container) return
 
-    // Reset styles and simple fade-in
-    gsap.set(container, { opacity: 0 })
-    gsap.to(container, {
-      opacity: 1,
-      duration: 0.3,
-      ease: 'power2.out',
-    })
+    // Premium entrance animation: fade in and slide up
+    gsap.fromTo(container,
+      { opacity: 0, y: 24 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power3.out',
+        clearProps: 'y',
+      }
+    )
 
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(t1)
+      clearTimeout(t2)
+      clearTimeout(t3)
+    }
   }, [lenis])
 
   return (

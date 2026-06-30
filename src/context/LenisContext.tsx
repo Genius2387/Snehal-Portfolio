@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import Lenis from 'lenis'
 import { ScrollTrigger } from '@/utils/animations'
 import { LenisContext } from '@/hooks/useLenis'
 
 export const LenisProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const lenisRef = useRef<Lenis | null>(null)
+  const [lenis, setLenis] = useState<Lenis | null>(null)
 
   useEffect(() => {
     // Instantiate Lenis
-    const lenis = new Lenis({
+    const instance = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
@@ -18,14 +18,14 @@ export const LenisProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       touchMultiplier: 2.0,
     })
 
-    lenisRef.current = lenis
+    setLenis(instance)
 
     // Sync Lenis scroll with ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update)
+    instance.on('scroll', ScrollTrigger.update)
 
     // Sync GSAP ticker with Lenis requestAnimationFrame
     const updateTicker = (time: number) => {
-      lenis.raf(time * 1000)
+      instance.raf(time * 1000)
     }
 
     import('gsap').then(({ gsap }) => {
@@ -34,7 +34,7 @@ export const LenisProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     })
 
     return () => {
-      lenis.destroy()
+      instance.destroy()
       import('gsap').then(({ gsap }) => {
         gsap.ticker.remove(updateTicker)
       })
@@ -42,7 +42,7 @@ export const LenisProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   }, [])
 
   return (
-    <LenisContext.Provider value={lenisRef.current}>
+    <LenisContext.Provider value={lenis}>
       {children}
     </LenisContext.Provider>
   )
