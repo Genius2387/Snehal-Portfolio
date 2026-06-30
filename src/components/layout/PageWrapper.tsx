@@ -1,56 +1,44 @@
 import React, { useEffect, useRef } from 'react'
 import { gsap } from '@/utils/animations'
 
+import { useLenis } from '@/hooks/useLenis'
+
 interface PageWrapperProps {
   children: React.ReactNode
 }
 
 export const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const overlayRef = useRef<HTMLDivElement>(null)
+  const lenis = useLenis()
 
   useEffect(() => {
-    const container = containerRef.current
-    const overlay = overlayRef.current
-    if (!container || !overlay) return
-
-    // Page Intro Animation Timeline
-    const tl = gsap.timeline({ defaults: { ease: 'power4.inOut' } })
-
-    // Reset styles
-    gsap.set(container, { opacity: 0, y: 15 })
-    gsap.set(overlay, { scaleY: 1 })
-
-    tl.to(overlay, {
-      scaleY: 0,
-      transformOrigin: 'top',
-      duration: 1.0,
-      ease: 'power4.inOut',
-    })
-      .to(
-        container,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-        },
-        '-=0.4'
-      )
-
-    return () => {
-      tl.kill()
+    // Scroll to top immediately when this page component mounts (after lazy load resolves)
+    const resetScroll = () => {
+      window.scrollTo(0, 0)
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true })
+      }
     }
-  }, [])
+
+    resetScroll()
+    const timer = setTimeout(resetScroll, 50)
+
+    const container = containerRef.current
+    if (!container) return
+
+    // Reset styles and simple fade-in
+    gsap.set(container, { opacity: 0 })
+    gsap.to(container, {
+      opacity: 1,
+      duration: 0.3,
+      ease: 'power2.out',
+    })
+
+    return () => clearTimeout(timer)
+  }, [lenis])
 
   return (
     <div className="relative min-h-screen w-full">
-      {/* Premium Transition Overlay Curtain */}
-      <div
-        ref={overlayRef}
-        className="pointer-events-none fixed inset-0 z-[999] origin-top bg-gradient-to-br from-indigo-900 to-black"
-        style={{ transform: 'scaleY(1)' }}
-      />
       {/* Page Content Container */}
       <div ref={containerRef} className="w-full">
         {children}

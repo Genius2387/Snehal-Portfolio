@@ -7,6 +7,7 @@ import { PROJECTS } from '@/data/mockData'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { Card } from '@/components/ui/Card'
+import ScrollStack, { ScrollStackItem } from './ScrollStack'
 
 const ImpactoCaseStudy: React.FC = () => {
   const [activePersona, setActivePersona] = React.useState<1 | 2>(1)
@@ -20,6 +21,8 @@ const ImpactoCaseStudy: React.FC = () => {
       'personas-&-insights',
       'user-journey',
       'information-architecture',
+      'design-decisions',
+      'wireframes',
     ]
 
     const handleScroll = () => {
@@ -551,7 +554,7 @@ const ImpactoCaseStudy: React.FC = () => {
                 </div>
 
                 {/* Bottom Journey Image */}
-                
+
               </section>
 
               {/* Information Architecture Section */}
@@ -587,59 +590,69 @@ const ImpactoCaseStudy: React.FC = () => {
 
                   {/* Sticky Note Mockup */}
                   <div className="md:col-span-5 flex justify-end md:absolute md:-top-20 md:-right-[190px] z-10 rotate-[2deg] hover:rotate-0 transition-transform duration-300 transform">
-                    <img 
-                      src="/projects/sticky-note.png" 
-                      alt="Sticky Note" 
+                    <img
+                      src="/projects/sticky-note.png"
+                      alt="Sticky Note"
                       className="w-full md:w-[450px] md:h-[350px] object-contain select-none pointer-events-none"
                     />
                   </div>
                 </div>
 
-                {/* Sitemap Tree Diagram */}
-                <div className="pt-8">
+                <div className="pt-8" style={{ fontFamily: 'Inter, sans-serif' }}>
                   {/* Root Node: IMPACTO */}
-                  <div className="flex justify-center mb-8">
-                    <div className="bg-[#fdf0f2] text-[#f33266] border border-[#fcebee] px-8 py-3 rounded-xl font-bold tracking-wider text-[15px] shadow-sm">
+                  <div className="flex justify-center mb-8 relative ml-5">
+                    <div className="bg-[#FFF0F2] text-[#E23B68] px-8 py-3 rounded-lg font-semibold tracking-wider text-[15px] select-none z-10">
                       IMPACTO
                     </div>
                   </div>
 
                   {/* Connecting lines & Columns */}
-                  <div className="relative">
-                    {/* Horizontal line connecting columns */}
-                    <div className="absolute top-[-32px] left-[10%] right-[10%] h-0.5 bg-[#f33266]/30"></div>
-                    {/* Center vertical connector to horizontal line */}
-                    <div className="absolute top-[-32px] left-1/2 w-0.5 h-8 bg-[#f33266]/30 -translate-x-1/2"></div>
+                  <div className="relative w-[875px] mx-auto">
+                    {/* SVG Connector Tree */}
+                    <div className="absolute top-[-36px] left-[87.5px] w-[704px] h-[108px] pointer-events-none select-none z-0">
+                      <svg width="704" height="108" viewBox="0 0 704 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="350.091" x2="350.091" y2="50" stroke="#F22E62" strokeWidth="0.5" />
+                        <line x1="701.841" y1="50.25" x2="1.84106" y2="50.25" stroke="#F22E62" strokeWidth="0.5" />
+                        <path d="M1.66429 107.735C1.76192 107.833 1.92021 107.833 2.01784 107.735L3.60883 106.144C3.70646 106.047 3.70646 105.889 3.60883 105.791C3.5112 105.693 3.35291 105.693 3.25528 105.791L1.84106 107.205L0.426851 105.791C0.32922 105.693 0.170929 105.693 0.0732975 105.791C-0.0243336 105.889 -0.0243336 106.047 0.0732975 106.144L1.66429 107.735ZM1.84106 50H1.59106L1.59106 107.559H1.84106H2.09106L2.09106 50H1.84106Z" fill="#F22E62" />
+                        <path d="M176.664 107.735C176.762 107.833 176.92 107.833 177.018 107.735L178.609 106.144C178.706 106.047 178.706 105.889 178.609 105.791C178.511 105.693 178.353 105.693 178.255 105.791L176.841 107.205L175.427 105.791C175.329 105.693 175.171 105.693 175.073 105.791C174.976 105.889 174.976 106.047 175.073 106.144L176.664 107.735ZM176.841 50H176.591V107.559H176.841H177.091V50H176.841Z" fill="#F22E62" />
+                        <path d="M349.664 107.735C349.762 107.833 349.92 107.833 350.018 107.735L351.609 106.144C351.706 106.047 351.706 105.889 351.609 105.791C351.511 105.693 351.353 105.693 351.255 105.791L349.841 107.205L348.427 105.791C348.329 105.693 348.171 105.693 348.073 105.791C347.976 105.889 347.976 106.047 348.073 106.144L349.664 107.735ZM349.841 50H349.591V107.559H349.841H350.091V50H349.841Z" fill="#F22E62" />
+                        <path d="M526.664 107.735C526.762 107.833 526.92 107.833 527.018 107.735L528.609 106.144C528.706 106.047 528.706 105.889 528.609 105.791C528.511 105.693 528.353 105.693 528.255 105.791L526.841 107.205L525.427 105.791C525.329 105.693 525.171 105.693 525.073 105.791C524.976 105.889 524.976 106.047 525.073 106.144L526.664 107.735ZM526.841 50H526.591V107.559H526.841H527.091V50H526.841Z" fill="#F22E62" />
+                        <path d="M701.664 107.735C701.762 107.833 701.92 107.833 702.018 107.735L703.609 106.144C703.706 106.047 703.706 105.889 703.609 105.791C703.511 105.693 703.353 105.693 703.255 105.791L701.841 107.205L700.427 105.791C700.329 105.693 700.171 105.693 700.073 105.791C699.976 105.889 699.976 106.047 700.073 106.144L701.664 107.735ZM701.841 50H701.591V107.559H701.841H702.091V50H701.841Z" fill="#F22E62" />
+                      </svg>
+                    </div>
 
-                    <div className="grid grid-cols-5 gap-4 items-start">
+                    <div className="grid grid-cols-5 gap-4 items-start pt-[72px]">
                       {/* Column 1: Home */}
-                      <div className="flex flex-col items-center">
-                        {/* Vertical connector line segment to horizontal line */}
-                        <div className="w-0.5 h-8 bg-[#f33266]/30 mb-2"></div>
-                        <div className="bg-[#fdf0f2] text-[#f33266] py-2 px-3 rounded-lg font-bold text-[13.5px] text-center w-full shadow-sm mb-4">
+                      <div className="flex flex-col items-center relative">
+                        <div className="bg-[#FFF0F2] text-[#E23B68] py-2 px-3 rounded-md font-semibold text-[14px] text-center w-full select-none mb-6">
                           Home
                         </div>
                         {/* Child items vertical trunk */}
-                        <div className="relative w-full flex flex-col pl-4">
-                          <div className="absolute left-1.5 top-0 bottom-0 w-0.5 bg-[#f33266]/20"></div>
+                        <div className="relative w-full flex flex-col pl-6">
+                          {/* SVG points and lines vertical connector */}
+                          <div className="absolute left-[4px] top-[-48px] w-[11px] h-[258px] pointer-events-none select-none z-0">
+                            <svg width="11" height="258" viewBox="0 0 11 258" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <line x1="5.25" y1="25" x2="6.25" y2="258.001" stroke="#FB6579" strokeWidth="0.5" />
+                              <circle cx="5" cy="72.002" r="5" fill="#F22E62" />
+                              <circle cx="6" cy="144.002" r="5" fill="#F22E62" />
+                              <circle cx="6" cy="223.002" r="5" fill="#F22E62" />
+                            </svg>
+                          </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[28px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Featured
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[32px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Categories
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Nearby
                             </div>
                           </div>
@@ -647,38 +660,43 @@ const ImpactoCaseStudy: React.FC = () => {
                       </div>
 
                       {/* Column 2: Explore */}
-                      <div className="flex flex-col items-center">
-                        <div className="w-0.5 h-8 bg-[#f33266]/30 mb-2"></div>
-                        <div className="bg-[#fdf0f2] text-[#f33266] py-2 px-3 rounded-lg font-bold text-[13.5px] text-center w-full shadow-sm mb-4">
+                      <div className="flex flex-col items-center relative">
+                        <div className="bg-[#FFF0F2] text-[#E23B68] py-2 px-3 rounded-md font-semibold text-[14px] text-center w-full select-none mb-6">
                           Explore
                         </div>
-                        <div className="relative w-full flex flex-col pl-4">
-                          <div className="absolute left-1.5 top-0 bottom-0 w-0.5 bg-[#f33266]/20"></div>
+                        {/* Child items vertical trunk */}
+                        <div className="relative w-full flex flex-col pl-6">
+                          {/* SVG points and lines vertical connector */}
+                          <div className="absolute left-[4px] top-[-37px] w-[10px] h-[318px] pointer-events-none select-none z-0">
+                            <svg width="10" height="318" viewBox="0 0 10 318" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <line x1="5.25" y1="15" x2="5.25" y2="318" stroke="#FB6579" strokeWidth="0.5" />
+                              <circle cx="5" cy="60" r="5" fill="#F22E62" />
+                              <circle cx="5" cy="135" r="5" fill="#F22E62" />
+                              <circle cx="5" cy="211" r="5" fill="#F22E62" />
+                              <circle cx="5" cy="282" r="5" fill="#F22E62" />
+                            </svg>
+                          </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[29px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Search
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[30px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Filters
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[25px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               All Events
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Interests
                             </div>
                           </div>
@@ -686,45 +704,50 @@ const ImpactoCaseStudy: React.FC = () => {
                       </div>
 
                       {/* Column 3: Event */}
-                      <div className="flex flex-col items-center">
-                        <div className="w-0.5 h-8 bg-[#f33266]/30 mb-2"></div>
-                        <div className="bg-[#fdf0f2] text-[#f33266] py-2 px-3 rounded-lg font-bold text-[13.5px] text-center w-full shadow-sm mb-4">
+                      <div className="flex flex-col items-center relative">
+                        <div className="bg-[#FFF0F2] text-[#E23B68] py-2 px-3 rounded-md font-semibold text-[14px] text-center w-full select-none mb-6">
                           Event
                         </div>
-                        <div className="relative w-full flex flex-col pl-4">
-                          <div className="absolute left-1.5 top-0 bottom-0 w-0.5 bg-[#f33266]/20"></div>
+                        {/* Child items vertical trunk */}
+                        <div className="relative w-full flex flex-col pl-6">
+                          {/* SVG points and lines vertical connector */}
+                          <div className="absolute left-[4px] top-[-33px] w-[11px] h-[383px] pointer-events-none select-none z-0">
+                            <svg width="11" height="383" viewBox="0 0 11 383" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <line x1="6.0127" y1="383.002" x2="6.0127" y2="15" stroke="#FB6579" strokeWidth="0.5" />
+                              <circle cx="6" cy="129.002" r="5" fill="#F22E62" />
+                              <circle cx="5" cy="56.002" r="5" fill="#F22E62" />
+                              <circle cx="6" cy="202.002" r="5" fill="#F22E62" />
+                              <circle cx="6" cy="276.002" r="5" fill="#F22E62" />
+                              <circle cx="6" cy="349.002" r="5" fill="#F22E62" />
+                            </svg>
+                          </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[27px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Event Details
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[27px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Apply
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[28px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Organizer
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[27px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Reviews
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Join
                             </div>
                           </div>
@@ -732,77 +755,87 @@ const ImpactoCaseStudy: React.FC = () => {
                       </div>
 
                       {/* Column 4: My Impact */}
-                      <div className="flex flex-col items-center">
-                        <div className="w-0.5 h-8 bg-[#f33266]/30 mb-2"></div>
-                        <div className="bg-[#fdf0f2] text-[#f33266] py-2 px-3 rounded-lg font-bold text-[13.5px] text-center w-full shadow-sm mb-4">
+                      <div className="flex flex-col items-center relative">
+                        <div className="bg-[#FFF0F2] text-[#E23B68] py-2 px-3 rounded-md font-semibold text-[14px] text-center w-full select-none mb-6">
                           My Impact
                         </div>
-                        <div className="relative w-full flex flex-col pl-4">
-                          <div className="absolute left-1.5 top-0 bottom-0 w-0.5 bg-[#f33266]/20"></div>
+                        {/* Child items vertical trunk */}
+                        <div className="relative w-full flex flex-col pl-6">
+                          {/* SVG points and lines vertical connector */}
+                          <div className="absolute left-[4px] top-[-37px] w-[11px] h-[258px] pointer-events-none select-none z-0">
+                            <svg width="11" height="258" viewBox="0 0 11 258" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <line x1="5.25" y1="15" x2="6.25" y2="258.001" stroke="#FB6579" strokeWidth="0.5" />
+                              <circle cx="5" cy="60.002" r="5" fill="#F22E62" />
+                              <circle cx="5" cy="139.002" r="5" fill="#F22E62" />
+                              <circle cx="6" cy="213.002" r="5" fill="#F22E62" />
+                            </svg>
+                          </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[33px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Hours Tracked
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[28px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Certificates
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
-                              Impact Overview
+                          <div className="relative flex items-center min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
+                              Imapct Overview
                             </div>
                           </div>
                         </div>
                       </div>
 
                       {/* Column 5: Profile */}
-                      <div className="flex flex-col items-center">
-                        <div className="w-0.5 h-8 bg-[#f33266]/30 mb-2"></div>
-                        <div className="bg-[#fdf0f2] text-[#f33266] py-2 px-3 rounded-lg font-bold text-[13.5px] text-center w-full shadow-sm mb-4">
+                      <div className="flex flex-col items-center relative">
+                        <div className="bg-[#FFF0F2] text-[#E23B68] py-2 px-3 rounded-md font-semibold text-[14px] text-center w-full select-none mb-6">
                           Profile
                         </div>
-                        <div className="relative w-full flex flex-col pl-4">
-                          <div className="absolute left-1.5 top-0 bottom-0 w-0.5 bg-[#f33266]/20"></div>
+                        {/* Child items vertical trunk */}
+                        <div className="relative w-full flex flex-col pl-6">
+                          {/* SVG points and lines vertical connector */}
+                          <div className="absolute left-[4px] top-[-39px] w-[10px] h-[383px] pointer-events-none select-none z-0">
+                            <svg width="10" height="383" viewBox="0 0 10 383" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <line x1="5.0127" y1="383.002" x2="5.0127" y2="15" stroke="#FB6579" strokeWidth="0.5" />
+                              <circle cx="5" cy="141" r="5" fill="#F22E62" />
+                              <circle cx="5" cy="62" r="5" fill="#F22E62" />
+                              <circle cx="5" cy="215" r="5" fill="#F22E62" />
+                              <circle cx="5" cy="282" r="5" fill="#F22E62" />
+                              <circle cx="5" cy="356" r="5" fill="#F22E62" />
+                            </svg>
+                          </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[33px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Saved Events
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[28px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               My Profile
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[21px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Interests
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center mb-[28px] min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Settings
                             </div>
                           </div>
 
-                          <div className="relative py-2 w-full">
-                            <div className="absolute left-[-13px] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#f33266]"></div>
-                            <div className="bg-white border border-[#fcebee] text-[#1c0d26] py-2 px-2.5 rounded-lg text-center text-[12px] font-bold shadow-sm w-full">
+                          <div className="relative flex items-center min-h-[46px]">
+                            <div className="bg-white border border-[#E4E4E7] text-[#3F3F46] py-2.5 px-4 rounded-xl text-center text-[13.5px] font-medium shadow-sm w-full select-none hover:shadow-md transition-shadow duration-200">
                               Help & Support
                             </div>
                           </div>
@@ -810,6 +843,251 @@ const ImpactoCaseStudy: React.FC = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+              </section>
+
+              {/* Design Decisions Section */}
+              <section
+                id="design-decisions"
+                className="mt-24 pt-16 border-t border-border-custom dark:border-white/10 space-y-12 max-w-[850px]"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                {/* Title & Introduction */}
+                <div className="space-y-4">
+                  <h3 className="text-xl sm:text-2xl md:text-[28px] font-extrabold text-neutral-bright tracking-tight leading-snug">
+                    Design Decisions
+                  </h3>
+                  <p className="text-[16px] text-neutral-light leading-relaxed max-w-3xl italic" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Turning research insights into interface decisions.
+                  </p>
+                  <p className="text-[16px] text-neutral-bright leading-relaxed max-w-3xl font-medium mt-4">
+                    Every <span className="text-[#f33266] font-semibold">interaction</span> in Impacto was designed to <span className="text-[#f33266] font-semibold">reduce friction</span>, <span className="text-[#f33266] font-semibold">increase trust</span>, and help users <span className="text-[#f33266] font-semibold">volunteer faster</span>.
+                  </p>
+                </div>
+
+                {/* Decisions content blocks - Stack layout */}
+                <div className="space-y-16">
+                  {/* Decision 1 */}
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    {/* Left: Content */}
+                    <div className="md:col-span-4 space-y-4 flex flex-col items-center md:items-start text-center md:text-left pr-4">
+                      <div className="w-12 h-12 rounded-full bg-[#fdf0f2] flex items-center justify-center shrink-0">
+                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#f33266]">
+                          <path d="M6 10L16 5L26 10L16 15L6 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M6 16L16 21L26 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M6 22L16 27L26 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                      <h4 className="font-bold text-neutral-bright text-[18px]">
+                        Reduce Complexity
+                      </h4>
+                      <p className="text-[14px] text-neutral-light leading-relaxed font-normal">
+                        Simplified the navigation by limiting primary sections, helping users find volunteering opportunities without feeling overwhelmed.
+                      </p>
+                    </div>
+
+                    {/* Right: Image Slot & Caption */}
+                    <div className="md:col-span-8 flex flex-col items-center">
+                      <img
+                        src="/projects/decision-1.png"
+                        alt="Focused Navigation"
+                        className="w-full h-auto rounded-2xl"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Decision 2 */}
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    {/* Left: Content */}
+                    <div className="md:col-span-4 space-y-4 flex flex-col items-center md:items-start text-center md:text-left pr-4">
+                      <div className="w-12 h-12 rounded-full bg-[#fdf0f2] flex items-center justify-center shrink-0">
+                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#f33266]">
+                          <path d="M6 10L16 5L26 10L16 15L6 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M6 16L16 21L26 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M6 22L16 27L26 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                      <h4 className="font-bold text-neutral-bright text-[18px]">
+                        Organized by Intent
+                      </h4>
+                      <p className="text-[14px] text-neutral-light leading-relaxed font-normal">
+                        Grouped features around user goals rather than system functions, making every action feel more intuitive.
+                      </p>
+                    </div>
+
+                    {/* Right: Image Slot & Caption */}
+                    <div className="md:col-span-8 flex flex-col items-center">
+                      <img
+                        src="/projects/decision-2.png"
+                        alt="Actions Grouped by Goals"
+                        className="w-full h-auto rounded-2xl"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Decision 3 */}
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    {/* Left: Content */}
+                    <div className="md:col-span-4 space-y-4 flex flex-col items-center md:items-start text-center md:text-left pr-4">
+                      <div className="w-12 h-12 rounded-full bg-[#fdf0f2] flex items-center justify-center shrink-0">
+                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#f33266]">
+                          <path d="M6 10L16 5L26 10L16 15L6 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M6 16L16 21L26 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M6 22L16 27L26 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                      <h4 className="font-bold text-neutral-bright text-[18px]">
+                        Clear Primary Action
+                      </h4>
+                      <p className="text-[14px] text-neutral-light leading-relaxed font-normal">
+                        Highlighted "Apply / Join" as the primary CTA to encourage quicker participation and reduce hesitation.
+                      </p>
+                    </div>
+
+                    {/* Right: Image Slot */}
+                    <div className="md:col-span-8 flex flex-col items-center">
+                      <img
+                        src="/projects/decision-3.png"
+                        alt="Clear Primary Action"
+                        className="w-full h-auto rounded-2xl"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Decision 4 */}
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    {/* Left: Content */}
+                    <div className="md:col-span-4 space-y-4 flex flex-col items-center md:items-start text-center md:text-left pr-4">
+                      <div className="w-12 h-12 rounded-full bg-[#fdf0f2] flex items-center justify-center shrink-0">
+                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#f33266]">
+                          <path d="M6 10L16 5L26 10L16 15L6 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M6 16L16 21L26 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M6 22L16 27L26 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                      <h4 className="font-bold text-neutral-bright text-[18px]">
+                        Logical Journey
+                      </h4>
+                      <p className="text-[14px] text-neutral-light leading-relaxed font-normal">
+                        Structured the experience to naturally guide users from discovering &rarr; evaluating &rarr; joining &rarr; tracking their volunteering journey.
+                      </p>
+                    </div>
+
+                    {/* Right: Image Slot */}
+                    <div className="md:col-span-8 flex flex-col items-center">
+                      <img
+                        src="/projects/decision-4.png"
+                        alt="Logical Journey"
+                        className="w-full h-auto rounded-2xl"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Decision 5 */}
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                    {/* Left: Content */}
+                    <div className="md:col-span-4 space-y-4 flex flex-col items-center md:items-start text-center md:text-left pr-4">
+                      <div className="w-12 h-12 rounded-full bg-[#fdf0f2] flex items-center justify-center shrink-0">
+                        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#f33266]">
+                          <path d="M6 10L16 5L26 10L16 15L6 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M6 16L16 21L26 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M6 22L16 27L26 22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
+                      <h4 className="font-bold text-neutral-bright text-[18px]">
+                        Easy Discoverability
+                      </h4>
+                      <p className="text-[14px] text-neutral-light leading-relaxed font-normal">
+                        Prioritized important information with clear visual hierarchy, reducing unnecessary searching and cognitive load.
+                      </p>
+                    </div>
+
+                    {/* Right: Image Slot */}
+                    <div className="md:col-span-8 flex flex-col items-center">
+                      <img
+                        src="/projects/decision-5.png"
+                        alt="Easy Discoverability"
+                        className="w-full h-auto rounded-2xl"
+                      />
+                    </div>
+                  </div>
+                </div>
+                {/* Callout Box */}
+                <div className="bg-[#FFF0F2] border border-[#ffccd5] rounded-[24px] p-6 flex items-center gap-6 mt-12">
+                  <div className="bg-white rounded-xl w-14 h-14 border border-[#ffccd5] flex items-center justify-center shrink-0 shadow-sm">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#f33266]">
+                      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M12 3V5M12 19V21M3 12H5M19 12H21M5.636 5.636L7.05 7.05M16.95 16.95L18.364 18.364M5.636 18.364L7.05 16.95M16.95 7.05L18.364 5.636" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                    </svg>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[#3f3f46] italic text-[16px] leading-tight font-medium" style={{ fontFamily: 'Caveat, cursive' }}>
+                      Why this matter
+                    </p>
+                    <p className="text-[15px] font-normal text-[#3f3f46] leading-relaxed">
+                      It's about helping users reach their goal with fewer decisions, fewer clicks, and greater confidence
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Wireframe Exploration Section */}
+              <section
+                id="wireframes"
+                className="mt-24 pt-16 border-t border-border-custom dark:border-white/10 space-y-8 max-w-[850px]"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                {/* NEXT STEP Badge */}
+                <div className="inline-flex items-center gap-1.5 border border-[#FB6579] text-[#FB6579] rounded-full px-4 py-1.5 text-[11px] font-bold tracking-wider uppercase select-none bg-[#FFF0F2]">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" strokeWidth="2">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  Next Step
+                </div>
+
+                <div className="space-y-4">
+                  <span className="text-[20px] font-bold text-[#f33266] block">
+                    Wireframe Exploration
+                  </span>
+                  <h3 className="text-[28px] font-black text-neutral-bright tracking-tight leading-tight uppercase" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    FROM STRUCTURE<br />TO SCREENS
+                  </h3>
+                  <p className="text-[15px] text-neutral-light leading-relaxed max-w-3xl font-normal pt-2">
+                    With the information architecture finalized, I translated the user journey into low-fidelity wireframes to validate layouts, navigation, and interaction patterns before moving into visual design. Every screen was designed to reduce friction and guide users naturally from discovering opportunities to creating real impact.
+                  </p>
+                </div>
+
+                <div className="pt-8">
+                  <ScrollStack className="w-full">
+                    <ScrollStackItem itemClassName="flex items-center justify-center">
+                      <img
+                        src="/projects/wireframe-1.png"
+                        alt="Wireframe 1 - Structure Exploration"
+                        className="w-full h-full object-cover rounded-[40px]"
+                      />
+                    </ScrollStackItem>
+                    <ScrollStackItem itemClassName="flex items-center justify-center">
+                      <img
+                        src="/projects/wireframe-2.png"
+                        alt="Wireframe 2 - Layout Variations"
+                        className="w-full h-full object-cover rounded-[40px]"
+                      />
+                    </ScrollStackItem>
+                    <ScrollStackItem itemClassName="flex items-center justify-center">
+                      <img
+                        src="/projects/wireframe-3.png"
+                        alt="Wireframe 3 - Navigation Design"
+                        className="w-full h-full object-cover rounded-[40px]"
+                      />
+                    </ScrollStackItem>
+                    <ScrollStackItem itemClassName="flex items-center justify-center">
+                      <img
+                        src="/projects/wireframe-4.png"
+                        alt="Wireframe 4 - High Fidelity Planning"
+                        className="w-full h-full object-cover rounded-[40px]"
+                      />
+                    </ScrollStackItem>
+                  </ScrollStack>
                 </div>
               </section>
             </div> {/* End of Left Column */}
@@ -824,6 +1102,7 @@ const ImpactoCaseStudy: React.FC = () => {
                   'Personas & Insights',
                   'User Journey',
                   'Information Architecture',
+                  'Design Decisions',
                   'Wireframes',
                   'Visual Design',
                   'High-Fidelity Screens',

@@ -6,22 +6,42 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { AppRouter } from '@/routes'
 
-const environment = 'development'; // 'development' or 'production'
+import { useLenis } from '@/hooks/useLenis'
+
 
 const AppContent: React.FC = () => {
   const location = useLocation()
   const navigate = useNavigate()
+  const lenis = useLenis()
   const isHomePage = location.pathname === '/home'
+  const isProjectDetailPage = location.pathname.startsWith('/projects/') && location.pathname !== '/projects'
   const isLoadingPage = location.pathname === '/loading' || location.pathname === '/'
 
   useEffect(() => {
-    if (environment === 'development') return
+    // Disable browser default scroll restoration
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+
     const currentPath = window.location.pathname
-    if (currentPath !== '/loading' && currentPath !== '/') {
-      sessionStorage.setItem('redirectPath', currentPath)
+    if (currentPath === '/home' || currentPath === '/') {
+      sessionStorage.setItem('redirectPath', '/home')
       navigate('/loading', { replace: true })
     }
   }, [])
+
+  useEffect(() => {
+    const handleScrollReset = () => {
+      window.scrollTo(0, 0)
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true })
+      }
+    }
+
+    handleScrollReset()
+    const timer = setTimeout(handleScrollReset, 50)
+    return () => clearTimeout(timer)
+  }, [location.pathname, lenis])
 
   if (isLoadingPage) {
     return <AppRouter />
@@ -35,7 +55,7 @@ const AppContent: React.FC = () => {
         <AppRouter />
       </main>
 
-      {!isHomePage && <Footer />}
+      {!isHomePage && !isProjectDetailPage && <Footer />}
     </div>
   )
 }
