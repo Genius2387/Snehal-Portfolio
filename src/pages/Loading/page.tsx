@@ -222,7 +222,7 @@ const SnehalIntro = ({ onSkip }: { onSkip?: () => void }) => {
           right: 32,
           background: 'none',
           border: 'none',
-          color: '#888',
+          color: '#000',
           fontSize: '12px',
           letterSpacing: '3px',
           cursor: 'pointer',
@@ -233,7 +233,7 @@ const SnehalIntro = ({ onSkip }: { onSkip?: () => void }) => {
           transition: 'color 0.3s',
         }}
         onMouseEnter={(e) => (e.target as HTMLElement).style.color = '#B85450'}
-        onMouseLeave={(e) => (e.target as HTMLElement).style.color = '#888'}
+        onMouseLeave={(e) => (e.target as HTMLElement).style.color = '#000'}
       >
         SKIP <span style={{ fontSize: '16px' }}>→</span>
       </button>
@@ -241,7 +241,8 @@ const SnehalIntro = ({ onSkip }: { onSkip?: () => void }) => {
       {/* ─── MAIN CONTENT ─── */}
       <div style={{ textAlign: 'center', marginTop: '-35px', marginBottom: '30px' }}>
         <h1 className="intro-title" style={{
-          fontSize: 'clamp(32px, 5vw, 56px)',
+          fontSize: '50px',
+          fontFamily: "'Caveat', cursive",
           fontWeight: '400',
           color: '#1a1a1a',
           margin: 0,
@@ -249,8 +250,6 @@ const SnehalIntro = ({ onSkip }: { onSkip?: () => void }) => {
         }}>
           brewing <span style={{
             color: '#B85450',
-            fontStyle: 'italic',
-            fontFamily: "'Georgia', serif",
           }}>ideas</span>, one cup at a time.
         </h1>
         <p className="intro-subtitle" style={{
@@ -596,7 +595,8 @@ const SnehalIntro = ({ onSkip }: { onSkip?: () => void }) => {
         bottom: '24px',
         textAlign: 'center',
         fontSize: '11px',
-        color: '#AAA',
+        color: '#86827f',
+        opacity: 0.8,
         fontFamily: 'monospace',
         letterSpacing: '0.5px',
       }}>
